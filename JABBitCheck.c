@@ -12,7 +12,7 @@
     //Varables for program
     FILE *myFile;           //File to scan through
     unsigned long len;      //Length of the file
-    int *buffer;           //Buffer to hold the bytes of the file
+    char *buffer;           //Buffer to hold the bytes of the file
     //Make sure a file path was passed to the program
     if (argc > 1)
     {
@@ -33,15 +33,15 @@
         rewind(myFile);
         
         //Make the buffer big enough to hold the entire file
-        buffer = (int *)malloc((len + 1) * sizeof(int));
+        buffer = (char *)malloc((len + 1) * sizeof(char));
         
         //Read the file into the buffer
-        fread(buffer, sizeof(int), len, myFile);
+        fread(buffer, sizeof(char), len, myFile);
         
         //Iterate through the file one byte at a time
         for(int i=0; i < len; i++)
         {
-            printf("Byte %d is %20x\n", i, buffer[i]); 
+            printf("Byte %d is %c (%x)\n", i, buffer[i], buffer[i]); 
         }
         
         //Close the file
